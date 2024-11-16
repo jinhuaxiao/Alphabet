@@ -1,0 +1,67 @@
+.keyboard-container {
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.key {
+  width: 50px;
+  height: 50px;
+  margin: 4px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 0.1),
+    -3px -3px 6px rgba(255, 255, 255, 0.8);
+}
+
+.key:hover {
+  transform: translateY(-2px);
+}
+
+.key.active {
+  background: linear-gradient(145deg, #4F46E5, #4338CA);
+  color: white;
+  transform: translateY(2px);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 手指区域颜色 */
+.finger-left-pinky { background: linear-gradient(145deg, #FF9A9E, #FAD0C4); }
+.finger-left-ring { background: linear-gradient(145deg, #A18CD1, #FBC2EB); }
+.finger-left-middle { background: linear-gradient(145deg, #84FAB0, #8FD3F4); }
+.finger-left-index { background: linear-gradient(145deg, #96E6A1, #D4FC79); }
+.finger-right-index { background: linear-gradient(145deg, #FDA085, #F6D365); }
+.finger-right-middle { background: linear-gradient(145deg, #FFB347, #FFCC33); }
+.finger-right-ring { background: linear-gradient(145deg, #FF6B6B, #FFE66D); }
+.finger-right-pinky { background: linear-gradient(145deg, #FF758C, #FF7EB3); }
+
+/* 手指图标样式 */
+.finger-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.1),
+    -8px -8px 16px rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.finger-icon.active {
+  transform: scale(1.1);
+  box-shadow: 
+    12px 12px 20px rgba(0, 0, 0, 0.15),
+    -12px -12px 20px rgba(255, 255, 255, 0.9);
+} 

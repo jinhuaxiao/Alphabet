@@ -14,14 +14,14 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Alphabet Matching Game - Learn English Letters",
-  description: "Interactive alphabet matching game for children to learn uppercase and lowercase letters",
-  keywords: "alphabet game, learning letters, educational game, children education",
+  title: "字母游戏 & 键盘练习",
+  description: "Interactive alphabet matching game and keyboard training for children",
+  keywords: "alphabet game, keyboard training, educational game, children education",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   themeColor: "#4F46E5",
   openGraph: {
-    title: "Alphabet Matching Game",
-    description: "Interactive alphabet matching game for children to learn uppercase and lowercase letters",
+    title: "字母游戏 & 键盘练习",
+    description: "Interactive alphabet matching game and keyboard training for children",
     type: "website",
   },
   robots: {
@@ -36,11 +36,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100`}
       >
-        {children}
+        <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center space-x-8">
+                <a 
+                  href="/" 
+                  className="text-lg font-medium hover:text-indigo-200 transition-colors"
+                >
+                  字母游戏
+                </a>
+                <a 
+                  href="/typing" 
+                  className="text-lg font-medium hover:text-indigo-200 transition-colors"
+                >
+                  键盘练习
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <main className="container mx-auto px-4 py-8">
+          {children}
+        </main>
       </body>
     </html>
   );
