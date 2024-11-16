@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Star, Trophy, Volume2 } from 'lucide-react';
-import type { HandSvgProps, PracticeModeType } from '../types/keyboard';
+import type { HandSvgProps, PracticeModeType, FingerType, FingerMapType, FingerColorsType } from '../types/keyboard';
 
 // 优化后的 HandSvg 组件
 const HandSvg: React.FC<HandSvgProps> = ({ finger, isLeft }) => (
@@ -336,7 +336,7 @@ const KeyboardTrainer = () => {
   ];
 
   // 定义手指负责的键位
-  const fingerMap = {
+  const fingerMap: FingerMapType = {
     'leftPinky': ['1', 'Q', 'A', 'Z'],
     'leftRing': ['2', 'W', 'S', 'X'],
     'leftMiddle': ['3', 'E', 'D', 'C'],
@@ -348,7 +348,7 @@ const KeyboardTrainer = () => {
   };
 
   // 手指颜色映射
-  const fingerColors = {
+  const fingerColors: FingerColorsType = {
     'leftPinky': 'from-pink-300 to-pink-400',
     'leftRing': 'from-purple-300 to-purple-400',
     'leftMiddle': 'from-blue-300 to-blue-400',
@@ -360,10 +360,10 @@ const KeyboardTrainer = () => {
   };
 
   // 获取键位对应的手指
-  const getKeyFinger = (key) => {
+  const getKeyFinger = (key: string): FingerType | null => {
     for (const [finger, keys] of Object.entries(fingerMap)) {
       if (keys.includes(key.toUpperCase())) {
-        return finger;
+        return finger as FingerType;
       }
     }
     return null;
@@ -396,7 +396,7 @@ const KeyboardTrainer = () => {
     const isActive = currentKey === key;
     const isPressed = pressedKey === key;
     const finger = getKeyFinger(key);
-    const fingerColor = fingerColors[finger];
+    const fingerColor = finger ? fingerColors[finger] : undefined;
     
     return (
       <div
@@ -412,7 +412,6 @@ const KeyboardTrainer = () => {
           ${isActive ? 'ring-2 sm:ring-4 ring-yellow-400 shadow-lg' : ''}
           border-b-2 sm:border-b-4 border-r-2 sm:border-r-4
           ${isPressed ? 'border-gray-400' : 'border-gray-300'}
-          // 响应式尺寸
           h-8 w-8 m-0.5
           sm:h-12 sm:w-12 sm:m-1
           md:h-14 md:w-14 md:m-1
@@ -424,13 +423,13 @@ const KeyboardTrainer = () => {
   };
 
   // 处理键盘按下
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: KeyboardEvent): void => {
     const key = event.key.toUpperCase();
     setPressedKey(key);
   };
 
   // 处理键盘释放
-  const handleKeyUp = (event) => {
+  const handleKeyUp = (event: KeyboardEvent): void => {
     setPressedKey('');
     const key = event.key.toUpperCase();
     
@@ -449,7 +448,7 @@ const KeyboardTrainer = () => {
       setTimeout(() => {
         startNewRound();
       }, 1000);
-    } else if (levelKeys[level].includes(key)) {
+    } else if (practiceMode.keys.includes(key)) {
       setMessage('再试一次! 💪');
       setConsecutiveCorrect(0);
     }

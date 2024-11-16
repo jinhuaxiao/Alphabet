@@ -7,13 +7,24 @@ export interface KeyboardLayoutType {
   [key: number]: string[];
 }
 
-export interface FingerMapType {
-  [key: string]: string[];
-}
+// 定义手指类型
+export type FingerType = 
+  | 'leftPinky' 
+  | 'leftRing' 
+  | 'leftMiddle' 
+  | 'leftIndex'
+  | 'rightIndex' 
+  | 'rightMiddle' 
+  | 'rightRing' 
+  | 'rightPinky';
 
-export interface FingerColorsType {
-  [key: string]: string;
-}
+export type FingerMapType = {
+  [K in FingerType]: string[];
+};
+
+export type FingerColorsType = {
+  [K in FingerType]: string;
+};
 
 export interface PracticeModeType {
   id: string;
